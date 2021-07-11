@@ -1,6 +1,5 @@
 import 'package:timeago/src/messages/lookupmessages.dart';
 
-/// French messages
 class FrMessages implements LookupMessages {
   @override
   String prefixAgo() => 'il y a';
@@ -36,38 +35,37 @@ class FrMessages implements LookupMessages {
   String wordSeparator() => ' ';
 }
 
-/// French shott messages
 class FrShortMessages implements LookupMessages {
   @override
-  String prefixAgo() => 'il y a';
+  String prefixAgo() => '';
   @override
-  String prefixFromNow() => "d'ici";
+  String prefixFromNow() => "";
   @override
   String suffixAgo() => '';
   @override
   String suffixFromNow() => '';
   @override
-  String lessThanOneMinute(int seconds) => "moins d'une minute";
+  String lessThanOneMinute(int seconds) => "moins de 1 min";
   @override
-  String aboutAMinute(int minutes) => 'une minute';
+  String aboutAMinute(int minutes) => '1min';
   @override
-  String minutes(int minutes) => '$minutes minutes';
+  String minutes(int minutes) => '${minutes}min';
   @override
-  String aboutAnHour(int minutes) => 'une heure';
+  String aboutAnHour(int minutes) => '1h';
   @override
-  String hours(int hours) => '$hours heures';
+  String hours(int hours) => '${hours}h';
   @override
-  String aDay(int hours) => 'un jour';
+  String aDay(int hours) => '1jrs';
   @override
-  String days(int days) => '$days jours';
+  String days(int days) => '${days}jrs';
   @override
-  String aboutAMonth(int days) => 'un mois';
+  String aboutAMonth(int days) => '1 mois';
   @override
-  String months(int months) => '$months mois';
+  String months(int months) => '${months}mois';
   @override
-  String aboutAYear(int year) => 'un an';
+  String aboutAYear(int year) => '1an';
   @override
-  String years(int years) => '$years ans';
+  String years(int years) => '${years}ans';
   @override
-  String wordSeparator() => ' ';
+  String wordSeparator() => '';
 }

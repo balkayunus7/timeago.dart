@@ -35,3 +35,38 @@ class TrMessages implements LookupMessages {
   @override
   String wordSeparator() => ' ';
 }
+
+class TrShortMessages implements LookupMessages {
+  @override
+  String prefixAgo() => '';
+  @override
+  String prefixFromNow() => '';
+  @override
+  String suffixAgo() => '';
+  @override
+  String suffixFromNow() => '';
+  @override
+  String lessThanOneMinute(int seconds) => '1dk';
+  @override
+  String aboutAMinute(int minutes) => '1dk';
+  @override
+  String minutes(int minutes) => '$minutes dk';
+  @override
+  String aboutAnHour(int minutes) => '1s';
+  @override
+  String hours(int hours) => '${hours}s';
+  @override
+  String aDay(int hours) => '1g';
+  @override
+  String days(int days) => '${days}g';
+  @override
+  String aboutAMonth(int days) => '1a';
+  @override
+  String months(int months) => '${months}a';
+  @override
+  String aboutAYear(int year) => '1y';
+  @override
+  String years(int years) => '${years}y';
+  @override
+  String wordSeparator() => ' ';
+}

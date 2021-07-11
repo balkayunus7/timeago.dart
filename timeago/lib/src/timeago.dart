@@ -1,6 +1,7 @@
 import 'package:timeago/src/messages/en_messages.dart';
 import 'package:timeago/src/messages/es_messages.dart';
 import 'package:timeago/src/messages/lookupmessages.dart';
+import 'package:timeago/timeago.dart';
 
 String _default = 'en';
 
@@ -9,6 +10,10 @@ Map<String, LookupMessages> _lookupMessagesMap = {
   'en_short': EnShortMessages(),
   'es': EsMessages(),
   'es_short': EsShortMessages(),
+  'tr': TrMessages(),
+  'tr_short': TrShortMessages(),
+  'fr': FrMessages(),
+  'fr_short': FrShortMessages(),
 };
 
 /// Sets the default [locale]. By default it is `en`.
@@ -51,7 +56,8 @@ String format(DateTime date,
     {String? locale, DateTime? clock, bool allowFromNow = false}) {
   final _locale = locale ?? _default;
   if (_lookupMessagesMap[_locale] == null) {
-    print("Locale [$_locale] has not been added, using [$_default] as fallback. To add a locale use [setLocaleMessages]");
+    print(
+        "Locale [$_locale] has not been added, using [$_default] as fallback. To add a locale use [setLocaleMessages]");
   }
   final _allowFromNow = allowFromNow;
   final messages = _lookupMessagesMap[_locale] ?? EnMessages();
