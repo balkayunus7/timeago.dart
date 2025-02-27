@@ -1,66 +1,18 @@
-import 'package:timeago/src/messages/en_messages.dart';
-import 'package:timeago/src/messages/es_messages.dart';
-import 'package:timeago/src/messages/lookupmessages.dart';
 import 'package:timeago/timeago.dart';
 
 String _default = 'en';
 
-Map<String, LookupMessages> _lookupMessagesMap = {
-  'en': EnMessages(),
-  'en_short': EnShortMessages(),
-  'es': EsMessages(),
-  'es_short': EsShortMessages(),
-  'tr': TrMessages(),
-  'tr_short': TrShortMessages(),
-  'fr': FrMessages(),
-  'fr_short': FrShortMessages(),
-};
-
-/// Sets the default [locale]. By default it is `en`.
-///
-/// Example
-/// ```
-/// setLocaleMessages('fr', FrMessages());
-/// setDefaultLocale('fr');
-/// ```
-void setDefaultLocale(String locale) {
-  assert(_lookupMessagesMap.containsKey(locale),
-      '[locale] must be a registered locale');
-  _default = locale;
-}
-
-/// Sets a [locale] with the provided [lookupMessages] to be available when
-/// using the [format] function.
-///
-/// Example:
-/// ```dart
-/// setLocaleMessages('fr', FrMessages());
-/// ```
-///
-/// If you want to define locale message implement [LookupMessages] interface
-/// with the desired messages
-///
-void setLocaleMessages(String locale, LookupMessages lookupMessages) {
-  _lookupMessagesMap[locale] = lookupMessages;
-}
-
-/// Formats provided [date] to a fuzzy time like 'a moment ago'
-///
-/// - If [locale] is passed will look for message for that locale, if you want
-///   to add or override locales use [setLocaleMessages]. Defaults to 'en'
-/// - If [clock] is passed this will be the point of reference for calculating
-///   the elapsed time. Defaults to DateTime.now()
-/// - If [allowFromNow] is passed, format will use the From prefix, ie. a date
-///   5 minutes from now in 'en' locale will display as "5 minutes from now"
-String format(DateTime date,
-    {String? locale, DateTime? clock, bool allowFromNow = false}) {
+String format(
+  DateTime date, {
+  required Map<String, LookupMessages> lookupMessagesMap,
+  String? locale,
+  DateTime? clock,
+  bool allowFromNow = false,
+}) {
   final _locale = locale ?? _default;
-  if (_lookupMessagesMap[_locale] == null) {
-    print(
-        "Locale [$_locale] has not been added, using [$_default] as fallback. To add a locale use [setLocaleMessages]");
-  }
+
   final _allowFromNow = allowFromNow;
-  final messages = _lookupMessagesMap[_locale] ?? EnMessages();
+  final messages = lookupMessagesMap[_locale] ?? EnMessages();
   final _clock = clock ?? DateTime.now();
   var elapsed = _clock.millisecondsSinceEpoch - date.millisecondsSinceEpoch;
 
